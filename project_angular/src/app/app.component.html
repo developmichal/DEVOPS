@@ -1,0 +1,44 @@
+<div class="container mt-3">
+  <h3>Form Validation</h3>
+  <p>Try to submit the form.</p>
+
+  <form class="was-validated" #myForm="ngForm" (ngSubmit)="save()">
+    <div class="mb-3 mt-3">
+      <label for="uname" class="form-label">Username:</label>
+      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required
+        [(ngModel)]="newUser.name" #name="ngModel" pattern="[א-ת A-Za-z]*" minlength="4" maxlength="20">
+      @if(name.invalid && (name.dirty || name.touched)){
+      <p [hidden]="!name.errors!['required']">שדה חובה</p>
+      <p [hidden]="!name.errors!['minlength']">קצר מידי</p>
+      <p [hidden]="!name.errors!['maxlength']">ארוך מידי</p>
+      <p [hidden]="!name.errors!['pattern']">לא תקין</p>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="id" class="form-label">id:</label>
+      <input type="text" class="form-control" id="id" placeholder="Enter password" name="id" required
+        [(ngModel)]="newUser.id" #id="ngModel" minlength="9" maxlength="9" pattern="[\d]*">
+      @if(id.invalid && (id.dirty || id.touched)){
+      <p [hidden]="!id.errors!['required']">שדה חובה</p>
+      <p [hidden]="!id.errors!['minlength']">קצר מידי</p>
+      <p [hidden]="!id.errors!['maxlength']">ארוך מידי</p>
+      <p [hidden]="!id.errors!['pattern']">לא תקין</p>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="adrs" class="form-label">address:</label>
+      <input type="text" class="form-control" id="adrs" placeholder="Enter address" name="adrs" required
+        [(ngModel)]="newUser.address" #adrs="ngModel" minlength="5" maxlength="25" pattern="[א-ת A-Za-z\d]*">
+      @if(adrs.invalid && (adrs.dirty || adrs.touched)){
+      <p [hidden]="!id.errors!['required']">שדה חובה</p>
+      <p [hidden]="!id.errors!['minlength']">קצר מידי</p>
+      <p [hidden]="!id.errors!['maxlength']">ארו מידי</p>
+      <p [hidden]="!id.errors!['pattern']">תקין לא</p>
+      }
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+  </form>
+</div>
