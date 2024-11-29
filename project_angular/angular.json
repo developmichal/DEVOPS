@@ -67,7 +67,9 @@
               "buildTarget": "project_angular:build:production"
             },
             "development": {
-              "buildTarget": "project_angular:build:development"
+              "buildTarget": "project_angular:build:development",
+              "host": "0.0.0.0",
+              "port": 4200
             }
           },
           "defaultConfiguration": "development"
